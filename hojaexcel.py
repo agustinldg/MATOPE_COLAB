@@ -18,7 +18,7 @@ from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 # from openpyxl.styles.colors import RED,GREEN,DARKGREEN,DARKRED
 from openpyxl.worksheet.datavalidation import DataValidation
 
-from constantes import *
+# from constantes import *
 
 
 
@@ -41,7 +41,7 @@ class HojaExcel:
 
     def inicializa(self):
         self.ws1.freeze_panes='A3'
-        for n in range(1,int(120*self.celdas_por_operacion/self.operaciones_por_fila)):
+        for n in range(1,int(20*self.celdas_por_operacion/self.operaciones_por_fila)):
             self.ws1.row_dimensions[n].height=12
         self.ws1.row_dimensions[2].height=24
 

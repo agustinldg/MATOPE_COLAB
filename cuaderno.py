@@ -10,7 +10,7 @@ from crea_hoja import crea_hoja
 
 
 builtins.NOMBRE_FICHERO="1a_Excel_test"
-builtins.OPERACONES ="  123+4 27*8  12+23+45+4344 12:3 12345:6"
+builtins.OPERACIONES ="  123+4 27*8  12+23+45+4344 12:3 12345:6"
 
 
 builtins.OPERACIONES_POR_FILA=2

@@ -3,8 +3,34 @@ from hojaexcel import *
 def crea_hoja ():
 
 
-    a=HojaExcel('Operaciones_Dificiles_test.xlsx',OPERACIONES_POR_FILA,CELDAS_POR_OPERACION)
+    a=HojaExcel(f'{NOMBRE_FICHERO}.xlsx',OPERACIONES_POR_FILA,CELDAS_POR_OPERACION)
 
+    opes=OPERACIONES.split()
+    errores=""
+    for i in range(len(open)):
+         ope=opes[i]
+         b=None 
+         
+         terminos=ope.split("*")
+         if len(terminos)==2:
+            b=Multiplicacion() 
+            b.LoadTerminos(terminos)
+            a.add_operacion(b)
+         
+         terminos=ope.split(":")
+         if len(terminos)==2:
+            if terminos[0] < terminos[1]:
+                  errores+=f"En la operacion {i+1}ª ' {terminos} '  el divisor es mayor que el dividendo."+"\n"
+            else:
+                  b=Division() 
+                  b.LoadTerminos(terminos)
+                  a.add_operacion(b)
+            
+         if b is None:
+                   errores+=f"Ls operacion {i+1}ª ' {terminos} ' no se puede incorporar '."+"\n"
+    
+    if errores !="" :
+             
 
 
     b=Suma()

@@ -5,7 +5,7 @@ Created on Sat Dec  2 21:53:38 2017
 
 @author: aldg
 """
-# from constantes import *
+from constantes import *
 import random
 
 class Regla:

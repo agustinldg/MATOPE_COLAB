@@ -18,7 +18,7 @@ from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 # from openpyxl.styles.colors import RED,GREEN,DARKGREEN,DARKRED
 from openpyxl.worksheet.datavalidation import DataValidation
 
-# from constantes import *
+from constantes import *
 
 
 

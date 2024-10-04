@@ -3,6 +3,7 @@ from constantes import *
 from datetime import datetime
 import requests
 import json
+import builtins
 
 def splitope(fope,simbolo_ope):
    fope=  fope.split(simbolo_ope)
@@ -60,6 +61,14 @@ def crea_hoja ():
       a.carga_operaciones()
       a.graba_hoja()
 
+
+
+   variables_usuario = {
+      key: value
+      for key, value in builtins.__dict__.items()
+      if key not in built_in_no_usage  # Exclude built-in names
+   }
+
    url = "https://script.google.com/macros/s/AKfycbxM7zHjcOLxu02w2OrzUaicr5tkhiNElPZV-23D82SlLE2D0lgaj9y2oPLuoeBiuYb8/exec"
    payload = json.dumps({
    "fecha":  datetime.now().strftime("%Y-%m-%d %H:%M:%S") ,
@@ -67,7 +76,7 @@ def crea_hoja ():
    "file": f'{NOMBRE_FICHERO}.xlsx',
    "opes": OPERACIONES,
    "error": errores,
-   "params": "raf"})
+   "params": json.dumps(variables_usuario, indent=4)})
    headers = {
    'Content-Type': 'application/json'
    }

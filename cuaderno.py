@@ -8,13 +8,18 @@ builtins.built_in_no_usage = set(dir(__builtins__)+['built_in_no_usage']) # Set 
 
 
 
+Nombre_de_la_hoja_Excel="2a_Excel_test"
+Lista_de_operaciones="  42:3 123+4 279992*1 327:1 12+23+45+4344 12:3 12345:6"
 
 
 
 
 
-builtins.NOMBRE_FICHERO="2a_Excel_test"
-builtins.OPERACIONES ="  123+4 279992*1 327:1 12+23+45+4344 12:3 12345:6"
+
+
+
+builtins.NOMBRE_FICHERO=Nombre_de_la_hoja_Excel
+builtins.OPERACIONES =Lista_de_operaciones
 
 
 builtins.OPERACIONES_POR_FILA=5

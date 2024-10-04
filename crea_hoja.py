@@ -75,7 +75,7 @@ def crea_hoja ():
    "user": "NA",
    "file": f'{NOMBRE_FICHERO}.xlsx',
    "opes": OPERACIONES,
-   "error": errores,
+   "error": 'OK' if errores =="\n" else errores,
    "params": json.dumps(variables_usuario, indent=4)})
    headers = {
    'Content-Type': 'application/json'

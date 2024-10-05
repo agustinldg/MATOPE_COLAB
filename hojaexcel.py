@@ -164,16 +164,16 @@ class HojaExcel:
 
             rango.append("$" + get_column_letter(n.posx + desp_x) + "$" + str(n.posy + desp_y) \
                    + ":$" + get_column_letter(n.posx + desp_x + len(n.valor) - 1) + "$" + str(n.posy + desp_y))
-            # print( rango)
+            print( rango)
 
             for c in range(n.posx, n.posx + len(n.valor) ):
                 if formula!="AND(" and formula[-1]!=',' :
                     formula+="&"
                 formula += "$" + get_column_letter(c +desp_x) + "$" + str(n.posy +desp_y)
             formula += '&"" ="' + str(n.valor) + '"'   # le concateno un texto vacio "" para convertirlo a texto cuando solo hay un digito
-            # print(formula)
+            print(formula)
         formula +=")"   # cierro el AND de la formula excel
-        # print(formula)
+        print(formula)
 
         celdaformula="$"+get_column_letter(self.y_operacion*self.operaciones_por_fila+ self.x_operacion +1)+"$1"
         self.ws1[celdaformula]="=IF("+formula+",1,0)"
@@ -198,7 +198,7 @@ class HojaExcel:
 
              self.ws1.conditional_formatting.add("$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),FormulaRule(formula=[formula], fill=greenFill))
 
-             # print("formula: "+"$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),formula)
+             print("formula: "+"$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),formula)
 
 
     def graba_hoja(self):

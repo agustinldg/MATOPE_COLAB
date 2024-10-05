@@ -84,7 +84,15 @@ def crea_hoja ():
    response = requests.request("POST", url, headers=headers, data=payload)
 
    print(response.text)
+   if response["status"]!="success":
+     print(response.text)
+   else:
+     print("Usage OK") 
    if errores !="\n" :
+            print ("La Hoja de Cálculo no se ha generado")
+            print ("Errores:")
+            print (errores)
+            print
             raise RuntimeError(errores)
 
 

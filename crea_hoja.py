@@ -66,7 +66,7 @@ def crea_hoja ():
    variables_usuario = {
       key: value
       for key, value in builtins.__dict__.items()
-      if key not in built_in_no_usage  # Exclude built-in names
+      if key not in built_in_no_usage  and key.isupper() # Exclude built-in names
    }
 
    url = "https://script.google.com/macros/s/AKfycbxM7zHjcOLxu02w2OrzUaicr5tkhiNElPZV-23D82SlLE2D0lgaj9y2oPLuoeBiuYb8/exec"
@@ -83,18 +83,19 @@ def crea_hoja ():
 
    response = requests.request("POST", url, headers=headers, data=payload)
 
-   print(response.text)
-   if response["status"]!="success":
+   if not response.ok:
      print(response.text)
    else:
      print("Usage OK") 
+     
    if errores !="\n" :
             print ("La Hoja de Cálculo no se ha generado")
             print ("Errores:")
             print (errores)
             print
             raise RuntimeError(errores)
-
+   else:
+      print("Hoja de Cálculo generada.")        
 
 
 

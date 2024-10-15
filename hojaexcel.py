@@ -19,9 +19,12 @@ from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 from openpyxl.worksheet.datavalidation import DataValidation
 
 from constantes import *
+# import builtins
 
 
-
+# llamoa a calcula_size con el tamaño de la 1a version  (11 es el tamaño de la 1a version de fontsize)
+def calc_size(sz):
+    return (round(sz*CFG_FONT_SIZE/11))
 
 
 class HojaExcel:
@@ -42,11 +45,11 @@ class HojaExcel:
     def inicializa(self):
         self.ws1.freeze_panes='A3'
         for n in range(1,int(20*self.celdas_por_operacion/self.operaciones_por_fila)):
-            self.ws1.row_dimensions[n].height=12
-        self.ws1.row_dimensions[2].height=24
+            self.ws1.row_dimensions[n].height=calc_size(12)
+        self.ws1.row_dimensions[2].height=calc_size(24)
 
         for n in range(1,self.operaciones_por_fila*self.celdas_por_operacion+30):
-            self.ws1.column_dimensions[ get_column_letter(n)].width=2
+            self.ws1.column_dimensions[ get_column_letter(n)].width=calc_size(2)
             #self.ws1.column_dimensions[get_column_letter(n)].font =Font(bold=True)
 
 
@@ -63,7 +66,7 @@ class HojaExcel:
         celdanivel = self.celdanivel
 
         self.ws1.merge_cells('C2:G2')
-        self.ws1["C2"].font=Font(bold=True,size=14,color="0066FF")
+        self.ws1["C2"].font=Font(bold=True,size=calc_size(14),color="0066FF")
         self.ws1["C2"]="MODO = "
 
         self.ws1.merge_cells('H2:M2')
@@ -71,7 +74,7 @@ class HojaExcel:
         dv = DataValidation(type="list", formula1='"Fácil,Pro,SuperPro"', allow_blank=False,showDropDown=False)
         self.ws1.add_data_validation(dv)
 
-        self.ws1[celdanivelcombo].font=Font(bold=True,size=15,color="0066FF")
+        self.ws1[celdanivelcombo].font=Font(bold=True,size=calc_size(15),color="0066FF")
         self.ws1[celdanivelcombo] ="Fácil"
         dv.add(self.ws1[celdanivelcombo])
 
@@ -80,20 +83,20 @@ class HojaExcel:
 
 # RESUELTAS
         self.ws1.merge_cells('P2:V2')
-        self.ws1["P2"].font=Font(bold=True,size=14,color="04B431")
+        self.ws1["P2"].font=Font(bold=True,size=calc_size(14),color="04B431")
         self.ws1["P2"]="RESUELTAS ="
 
         self.ws1.merge_cells('W2:Z2')
-        self.ws1["W2"].font = Font(bold=True, size=20, color="04B431")
+        self.ws1["W2"].font = Font(bold=True, size=calc_size(20), color="04B431")
         self.ws1["W2"]='=COUNTIF(1:1,"=1")'
 
 #faltan
         self.ws1.merge_cells('AA2:AF2')
-        self.ws1["AA2"].font=Font(bold=True,size=14,color="DF0101")
+        self.ws1["AA2"].font=Font(bold=True,size=calc_size(14),color="DF0101")
         self.ws1["AA2"]="FALTAN ="
 
         self.ws1.merge_cells('AG2:AJ2')
-        self.ws1["AG2"].font = Font(bold=True, size=20, color="DF0101")
+        self.ws1["AG2"].font = Font(bold=True, size=calc_size(20), color="DF0101")
         self.ws1["AG2"]='=COUNTIF(1:1,"=0")'
 
 # =CONTAR.SI(1:1;"=0")

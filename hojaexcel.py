@@ -56,7 +56,7 @@ class HojaExcel:
         for y in range(1,int(120*self.celdas_por_operacion/self.operaciones_por_fila)):
             for x in range(1, self.operaciones_por_fila * self.celdas_por_operacion + 30):
                 self.ws1.cell(row=y, column=x).alignment  = Alignment(horizontal="center", vertical="center")
-                self.ws1.cell(row=y, column=x).font=Font(bold=True)
+                self.ws1.cell(row=y, column=x).font=Font(bold=True,size=CFG_FONT_SIZE)
 # al = Alignment(horizontal="center", vertical="center")
 
 

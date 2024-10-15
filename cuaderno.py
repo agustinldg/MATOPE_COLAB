@@ -26,7 +26,7 @@ builtins.CFG_OPERACIONES =Lista_de_operaciones
 builtins.CFG_FONT_SIZE =Tamano_numeros
 
 
-builtins.CFG_OPERACIONES_POR_FILA=5
+builtins.CFG_OPERACIONES_POR_FILA=4
 builtins.CFG_CELDAS_POR_OPERACION=12
 
 

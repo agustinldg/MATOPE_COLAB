@@ -86,13 +86,15 @@ def crea_hoja ():
    if not response.ok:
      print(response.text)
    else:
-     print("Usage OK") 
-     
+     print("Usage archivado OK") 
+
    if errores !="\n" :
-            print ("La Hoja de Cálculo no se ha generado")
+            print ("La Hoja de Cálculo no se ha generado KO")
+    
+            print
             print ("Errores:")
             print (errores)
-            print
+   
             raise RuntimeError(errores)
    else:
       print("Hoja de Cálculo generada.")        

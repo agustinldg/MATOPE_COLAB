@@ -119,22 +119,22 @@ class Suma(Operacion):
         def LoadReglas(self):
             self.setTipo(T_ENUNCIADO)
             for t in self.terminos:
-                self.printDCadena(str(t),MARGEN_DERECHO)
+                self.printDCadena(str(t),CFG_MARGEN_DERECHO)
                 self.printLn()
 
             self.setTipo(T_ENUNCIADO_SIGNO)
-            self.setXy( MARGEN_DERECHO-self.GetAncho()-1,self.y-1)
+            self.setXy( CFG_MARGEN_DERECHO-self.GetAncho()-1,self.y-1)
             self.printCaracter("+")
             self.printLn()
 
             self.setTipo(T_FC_RESULTADO)
             resultado=sum(self.terminos)
-            self.printDCadena(str(resultado), MARGEN_DERECHO)
-            self.appendDRegla(T_FC_RESULTADO_RANGE, str(resultado), MARGEN_DERECHO,self.y)
+            self.printDCadena(str(resultado), CFG_MARGEN_DERECHO)
+            self.appendDRegla(T_FC_RESULTADO_RANGE, str(resultado), CFG_MARGEN_DERECHO,self.y)
 
             self.setTipo(T_ENUNCIADO_BORDE_INFERIOR)
-            self.setXy( MARGEN_DERECHO-self.GetAncho(),self.y-1)
-            self.printICadena(" "*(MARGEN_DERECHO-self.x+1))
+            self.setXy( CFG_MARGEN_DERECHO-self.GetAncho(),self.y-1)
+            self.printICadena(" "*(CFG_MARGEN_DERECHO-self.x+1))
 
 class Resta(Operacion):
     def LoadTerminosAleatorios(self):
@@ -170,13 +170,13 @@ class Resta(Operacion):
         sustraendo=self.terminos[0]
         minuendo=self.terminos[1]
         self.setTipo(T_ENUNCIADO)
-        self.printDCadena(str(sustraendo),MARGEN_DERECHO)
+        self.printDCadena(str(sustraendo),CFG_MARGEN_DERECHO)
         self.printLn()
-        self.printDCadena(str(minuendo), MARGEN_DERECHO)
+        self.printDCadena(str(minuendo), CFG_MARGEN_DERECHO)
         self.printLn()
 
         self.setTipo(T_ENUNCIADO_SIGNO)
-        self.setXy( MARGEN_DERECHO-self.GetAncho()-1,self.y-1)
+        self.setXy( CFG_MARGEN_DERECHO-self.GetAncho()-1,self.y-1)
         self.printCaracter("-")
         self.printLn()
 
@@ -184,12 +184,12 @@ class Resta(Operacion):
         self.setTipo(T_FC_RESULTADO)
         resultado=sustraendo-minuendo
         resultado='0'*(len(str(sustraendo))-len(str(resultado)))+str(resultado)
-        self.printDCadena(resultado, MARGEN_DERECHO)
-        self.appendDRegla(T_FC_RESULTADO_RANGE, resultado, MARGEN_DERECHO,self.y)
+        self.printDCadena(resultado, CFG_MARGEN_DERECHO)
+        self.appendDRegla(T_FC_RESULTADO_RANGE, resultado, CFG_MARGEN_DERECHO,self.y)
 
         self.setTipo(T_ENUNCIADO_BORDE_INFERIOR)
-        self.setXy( MARGEN_DERECHO-self.GetAncho(),self.y-1)
-        self.printICadena(" "*(MARGEN_DERECHO-self.x+1))
+        self.setXy( CFG_MARGEN_DERECHO-self.GetAncho(),self.y-1)
+        self.printICadena(" "*(CFG_MARGEN_DERECHO-self.x+1))
             
             
 class Multiplicacion(Operacion):
@@ -225,17 +225,17 @@ class Multiplicacion(Operacion):
             factor1=self.terminos[0]
             factor2=self.terminos[1]
             self.setTipo(T_ENUNCIADO)
-            self.printDCadena(str(factor1),MARGEN_DERECHO)
+            self.printDCadena(str(factor1),CFG_MARGEN_DERECHO)
             self.printLn()
-            self.printDCadena(str(factor2), MARGEN_DERECHO)
+            self.printDCadena(str(factor2), CFG_MARGEN_DERECHO)
             self.printLn()
             self.setTipo(T_ENUNCIADO_SIGNO)
-            self.setXy( MARGEN_DERECHO-self.GetAncho()-1,self.y-1)
+            self.setXy( CFG_MARGEN_DERECHO-self.GetAncho()-1,self.y-1)
             self.printCaracter("X")
             self.printLn()
             self.setTipo(T_ENUNCIADO_BORDE_INFERIOR)
-            self.setXy( MARGEN_DERECHO-self.GetAncho(),self.y-1)
-            self.printICadena(" "*(MARGEN_DERECHO-self.x+1))
+            self.setXy( CFG_MARGEN_DERECHO-self.GetAncho(),self.y-1)
+            self.printICadena(" "*(CFG_MARGEN_DERECHO-self.x+1))
             self.printLn()
             self.setTipo(T_FC_RESULTADO)    #<---- poner otro tipo/color
             noceros=0
@@ -246,19 +246,19 @@ class Multiplicacion(Operacion):
                 n=0
                 for f in reversed(str(factor2)):
                     if f != '0' :
-                         self.printDCadena(str(factor1*int(f)*10**n), MARGEN_DERECHO)
+                         self.printDCadena(str(factor1*int(f)*10**n), CFG_MARGEN_DERECHO)
                          self.printLn()
                     n+=1
                 self.setTipo(T_ENUNCIADO_BORDE_INFERIOR)
-                self.setXy(MARGEN_DERECHO - self.GetAncho(), self.y - 1)
-                self.printICadena(" " * (MARGEN_DERECHO - self.x + 1))
+                self.setXy(CFG_MARGEN_DERECHO - self.GetAncho(), self.y - 1)
+                self.printICadena(" " * (CFG_MARGEN_DERECHO - self.x + 1))
                 self.printLn()
 
             self.setTipo(T_FC_RESULTADO)
             resultado = factor1*factor2
             resultado = str(resultado)
-            self.printDCadena(resultado, MARGEN_DERECHO)
-            self.appendDRegla(T_FC_RESULTADO_RANGE, resultado, MARGEN_DERECHO, self.y)
+            self.printDCadena(resultado, CFG_MARGEN_DERECHO)
+            self.appendDRegla(T_FC_RESULTADO_RANGE, resultado, CFG_MARGEN_DERECHO, self.y)
 
 
 

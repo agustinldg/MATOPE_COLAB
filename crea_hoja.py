@@ -16,9 +16,9 @@ def splitope(fope,simbolo_ope):
 def crea_hoja ():
 
 
-   a=HojaExcel(f'{NOMBRE_FICHERO}.xlsx',OPERACIONES_POR_FILA,CELDAS_POR_OPERACION)
+   a=HojaExcel(f'{CFG_NOMBRE_FICHERO}.xlsx',CFG_OPERACIONES_POR_FILA,CFG_CELDAS_POR_OPERACION)
 
-   opes=OPERACIONES.split()
+   opes=CFG_OPERACIONES.split()
    errores="\n"
    for i in range(len(opes)):
       ope=opes[i]
@@ -66,15 +66,15 @@ def crea_hoja ():
    variables_usuario = {
       key: value
       for key, value in builtins.__dict__.items()
-      if key not in built_in_no_usage  and key.isupper() # Exclude built-in names
+      if key.startswith('CFG_') and key.isupper() # Exclude built-in names
    }
 
    url = "https://script.google.com/macros/s/AKfycbxM7zHjcOLxu02w2OrzUaicr5tkhiNElPZV-23D82SlLE2D0lgaj9y2oPLuoeBiuYb8/exec"
    payload = json.dumps({
    "fecha":  datetime.now().strftime("%Y-%m-%d %H:%M:%S") ,
    "user": "NA",
-   "file": f'{NOMBRE_FICHERO}.xlsx',
-   "opes": OPERACIONES,
+   "file": f'{CFG_NOMBRE_FICHERO}.xlsx',
+   "opes": CFG_OPERACIONES,
    "error": 'OK' if errores =="\n" else errores,
    "params": json.dumps(variables_usuario, indent=4)})
    headers = {

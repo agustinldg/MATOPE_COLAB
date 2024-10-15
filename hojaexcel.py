@@ -117,11 +117,11 @@ class HojaExcel:
             self.x_operacion=(self.x_operacion+1)% self.operaciones_por_fila
             if self.x_operacion==0 :
                 self.y_operacion+=1
-            print (ope.terminos,ope ,"--> OK")
+            print (ope ,ope.terminos,"--> OK")
 
     def carga_operacion(self,ope):
-        desp_x=self.x_operacion*self.celdas_por_operacion+MARGEN_X
-        desp_y=self.y_operacion*self.celdas_por_operacion+MARGEN_Y
+        desp_x=self.x_operacion*self.celdas_por_operacion+CFG_MARGEN_X
+        desp_y=self.y_operacion*self.celdas_por_operacion+CFG_MARGEN_Y
         izqui=ope.GetIzquierda()
 
         tx,ty=ope.GetTamano()

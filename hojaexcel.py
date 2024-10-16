@@ -26,6 +26,14 @@ from constantes import *
 def calc_size(sz):
     return (round(sz*CFG_FONT_SIZE/11))
 
+#evita que se seleccione por defecto un modo no disponible,si no existe ,elige el primero disponible
+def modo_defecto():
+    if CFG_MODO_SELEC in CFG_MODOS_DISPO.split(',') :
+        return CFG_MODO_SELEC
+    else:
+        return CFG_MODOS_DISPO.split(',')[0]
+    
+
 
 class HojaExcel:
     def __init__ (self, nombre, operaciones_por_fila=3, celdas_por_operacion=10):
@@ -71,11 +79,11 @@ class HojaExcel:
 
         self.ws1.merge_cells('H2:M2')
 
-        dv = DataValidation(type="list", formula1='"Fácil,Pro,SuperPro"', allow_blank=False,showDropDown=False)
+        dv = DataValidation(type="list", formula1='"'+CFG_MODOS_DISPO+'"', allow_blank=False,showDropDown=False)
         self.ws1.add_data_validation(dv)
 
         self.ws1[celdanivelcombo].font=Font(bold=True,size=calc_size(15),color="0066FF")
-        self.ws1[celdanivelcombo] ="Fácil"
+        self.ws1[celdanivelcombo] =modo_defecto()
         dv.add(self.ws1[celdanivelcombo])
 
         self.ws1[celdanivel]='=IF('+celdanivelcombo+'="Fácil",0,IF('+celdanivelcombo+'= "Pro",1,IF('+celdanivelcombo+'= "SuperPro",2,"")))'

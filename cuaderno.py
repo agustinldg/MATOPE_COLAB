@@ -12,11 +12,11 @@ from crea_hoja import crea_hoja
 Nombre_de_la_hoja_Excel="4a_Excel_test"
 Lista_de_operaciones="  42:3 123+4 279992*1 327:1 12+23+45+4344 12:3 12345:6"
 
-Tamano_tipo_de_letra=22  # font size 11
+Tamano_tipo_de_letra=26  # font size 11
 
 Color_Respuesta_Final_Correcta='2EFE2E'    #2EFE2E darkgreen (el de la primera versin)
 
-Color_Respuesta_Intermedia_Correcta='800080'    #E0F8E6 green (el de la lprimera version)
+Color_Respuesta_Intermedia_Correcta='FF77FF'    #E0F8E6 green (el de la lprimera version)
  
 
 

@@ -72,7 +72,7 @@ def crea_hoja ():
    url = "https://script.google.com/macros/s/AKfycbxM7zHjcOLxu02w2OrzUaicr5tkhiNElPZV-23D82SlLE2D0lgaj9y2oPLuoeBiuYb8/exec"
    payload = json.dumps({
    "fecha":  datetime.now().strftime("%Y-%m-%d %H:%M:%S") ,
-   "user": "NA",
+   "user": CFg_USER,
    "file": f'{CFG_NOMBRE_FICHERO}.xlsx',
    "opes": CFG_OPERACIONES,
    "error": 'OK' if errores =="\n" else errores,

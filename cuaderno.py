@@ -59,7 +59,7 @@ builtins.CFG_MARGEN_DERECHO=20
 builtins.CFG_MARGEN_X=4
 builtins.CFG_MARGEN_Y=3
 
-
+builtins.CFg_USER="Developer"
 
 
 

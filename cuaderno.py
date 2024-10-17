@@ -1,7 +1,7 @@
 
 
 import builtins
-
+import re
 
 from crea_hoja import crea_hoja
 
@@ -62,6 +62,17 @@ builtins.CFG_MARGEN_Y=3
 builtins.CFg_USER="Developer"
 
 
+test_CFG_COLOR_FINAL_OK=bool(re.match(r"^[A-Fa-f0-9]{6}$", CFG_COLOR_FINAL_OK))
+test_CFG_COLOR_INTERMEDIO_OK=bool(re.match(r"^[A-Fa-f0-9]{6}$", CFG_COLOR_INTERMEDIO_OK))
 
 
-crea_hoja()
+
+if  test_CFG_COLOR_FINAL_OK and test_CFG_COLOR_INTERMEDIO_OK:
+    crea_hoja()
+else:
+    print ('')
+    print (f'ERROR EN LA DEFINICION de "Color_Respuesta_Final_Correcta" = {CFG_COLOR_FINAL_OK} ' if not test_CFG_COLOR_FINAL_OK else "" )
+    print (f'ERROR EN LA DEFINICION de "Color_Respuesta_Intermedia_Correcta" = {CFG_COLOR_INTERMEDIO_OK} ' if not test_CFG_COLOR_INTERMEDIO_OK else "" )
+    print ('Los colores se definen con 6 carácteres de 0 a 9 ó de A a F.  Ejemplo 2EFE2E')
+    print ('Vuelve a ejecutar el proceso despues hacer la correción')
+    print ('')

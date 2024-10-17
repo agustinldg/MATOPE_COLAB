@@ -131,6 +131,19 @@ class HojaExcel:
             print (ope ,ope.terminos,"--> OK")
 
     def carga_operacion(self,ope):
+
+        #greenFill = PatternFill("solid", bgColor ="E0F8E6")
+        #colordarkgreen="2EFE2E"
+        #darkgreenFill = PatternFill("solid", bgColor = colordarkgreen)
+
+
+        color_finalOK=CFG_COLOR_FINAL_OK
+        fill_color_finalOK=PatternFill("solid", bgColor = color_finalOK)
+        fill_color_interOk=PatternFill("solid", bgColor =CFG_COLOR_INTERMEDIO_OK)
+         
+
+
+
         desp_x=self.x_operacion*self.celdas_por_operacion+CFG_MARGEN_X
         desp_y=self.y_operacion*self.celdas_por_operacion+CFG_MARGEN_Y
         izqui=ope.GetIzquierda()
@@ -139,9 +152,7 @@ class HojaExcel:
         desp_x=desp_x+int((self.celdas_por_operacion-tx)/2)-izqui
         desp_y=desp_y+int((self.celdas_por_operacion-ty)/2)
 
-        greenFill = PatternFill("solid", bgColor ="E0F8E6")
-        colordarkgreen="2EFE2E"
-        darkgreenFill = PatternFill("solid", bgColor = colordarkgreen)
+
 
 
         # T_ENUNCIADO,T_ENUNCIADO_SIGNO
@@ -190,14 +201,14 @@ class HojaExcel:
         celdaformula="$"+get_column_letter(self.y_operacion*self.operaciones_por_fila+ self.x_operacion +1)+"$1"
         self.ws1[celdaformula]="=IF("+formula+",1,0)"
         self.ws1[celdaformula].font=Font(color="FFFFFF")
-        self.ws1.conditional_formatting.add(celdaformula,   FormulaRule(formula=[celdaformula+"=1"], font=Font(color=colordarkgreen), fill=darkgreenFill))
+        self.ws1.conditional_formatting.add(celdaformula,   FormulaRule(formula=[celdaformula+"=1"], font=Font(color=color_finalOK), fill=fill_color_finalOK))
 
 
         formula="$"+get_column_letter(self.y_operacion*self.operaciones_por_fila+ self.x_operacion +1)+"$1=1"
         formula = 'AND(' + self.celdanivel + '<2,' + formula + ')'
         for rg in rango:
           self.ws1.conditional_formatting.add(rg,
-                                           FormulaRule(formula=[formula], fill=darkgreenFill))
+                                           FormulaRule(formula=[formula], fill=fill_color_finalOK))
 
         # T_FC_RESULTADO
 
@@ -208,7 +219,7 @@ class HojaExcel:
 
              formula='AND('+self.celdanivel +'=0,'+formula+')'
 
-             self.ws1.conditional_formatting.add("$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),FormulaRule(formula=[formula], fill=greenFill))
+             self.ws1.conditional_formatting.add("$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),FormulaRule(formula=[formula], fill=fill_color_interOk))
 
              # print("formula: "+"$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),formula)
 

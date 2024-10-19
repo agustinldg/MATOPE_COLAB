@@ -9,13 +9,17 @@ from constantes import *
 import random
 
 class Regla:
-    def __init__(self, tipo, valor, posx,posy):
+    def __init__(self, tipo, valor, posx,posy , test_valor=None,test_posx=None,test_posy=None):
         self.tipo = tipo
         self.valor = valor
         self.posx = posx
         self.posy = posy
+        self.test_valor=test_valor
+        self.test_posx=test_posx
+        self.test_posy=test_posy
+        # los valores test comprubean una casilla que no son las que se van a ver afectadas (para resta auxiliares en division)
     def __repr__(self):
-        return "Regla[%i, %s, %i, %i]" % (self.tipo, self.valor, self.posx, self.posy)
+        return "Regla[%i, %s, %i, %i, %s, %i, %i]" % (self.tipo, self.valor, self.posx, self.posy, self.test_valor, self.test_posx, self.test_posy)
 
 
 class Operacion:
@@ -41,11 +45,21 @@ class Operacion:
         self.y=posy
     
     
-    def appendRegla(self,tipo, valor, posx,posy):
-        self.reglas.append(Regla(tipo,valor,posx,posy))
-    def appendDRegla(self,tipo, valor, posx,posy):
-        self.appendRegla(tipo,valor,posx-len(str(valor))+1 ,posy)
-        
+
+    # def appendRegla(self,tipo, valor, posx,posy):
+    #     self.reglas.append(Regla(tipo,valor,posx,posy))
+    # def appendDRegla(self,tipo, valor, posx,posy):
+    #     self.appendRegla(tipo,valor,posx-len(str(valor))+1 ,posy)        
+
+
+    def appendRegla(self,tipo, valor, posx,posy, test_valor=None,test_posx=None,test_posy=None):
+        self.reglas.append(Regla(tipo,valor,posx,posy, test_valor,test_posx,test_posy))
+    def appendDRegla(self,tipo, valor, posx,posy ,test_valor=None,test_posx=None,test_posy=None):
+        self.appendRegla(tipo,valor,posx-len(str(valor))+1 ,posy, test_valor,test_posx,test_posy)
+
+
+
+
     def escribe (self):
         for r in self.reglas:
             print (r)
@@ -397,6 +411,7 @@ class Division_con_restas(Division):
                 # añado resta
                 
                 tmp_sustraendo=int(divisor)*int(dividendo[n_resta-1])
+                tmp_sustraendo=str(tmp_sustraendo).zfill(len(resto))
                 self.setXy(col-len(tmp_sustraendo)-1, self.y + 1)
 
                 self.setTipo(T_ENUNCIADO_RESTA_DIVI)
@@ -407,10 +422,18 @@ class Division_con_restas(Division):
 
                 
                 self.setTipo(T_FC_RESULTADO_RESTA_DIVI)
-                
+                self.printCaracter(" ")
+
+
+                self.appendRegla(T_FC_RESULTADO_SIGNO_RESTA_DIVI," "*1, col-len(tmp_sustraendo)-1, self.y,
+                                  dividendo[n_resta-1], len(str(dividendo))+n_resta-1,1  )
+
+                self.appendRegla(T_FC_RESULTADO_RESTA_DIVI," "*(len(tmp_sustraendo)+1), col-len(tmp_sustraendo)-1, self.y ,
+                                  dividendo[n_resta-1], len(str(dividendo))+n_resta-1,1  )
+
 
                 n_resta+=1
-
+                # fin  resta
 
 
 

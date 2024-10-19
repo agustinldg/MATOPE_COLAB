@@ -17,4 +17,4 @@ T_FC_RESULTADO_RANGE=20
 
 T_ENUNCIADO_RESTA_DIVI=8  #el - de las restas auxiliares de las divisiones
 T_FC_RESULTADO_RESTA_DIVI=12  #el borde inforrior de las restas auxiliares de las divisiones
-
+T_FC_RESULTADO_SIGNO_RESTA_DIVI=13  #desinvisibiliza el signo menos de las restas auxiliares de las divisiones

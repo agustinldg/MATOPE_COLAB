@@ -5,7 +5,7 @@ Created on Tue Dec  5 00:10:10 2017
 
 @author: aldg
 """
-from operacion import Regla, Operacion,Suma,Resta,Multiplicacion,Division
+from operacion import Regla, Operacion,Suma,Resta,Multiplicacion,Division,Division_con_restas
 
 from openpyxl import Workbook
 #from openpyxl.compat import range
@@ -222,6 +222,16 @@ class HojaExcel:
              self.ws1.conditional_formatting.add("$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),FormulaRule(formula=[formula], fill=fill_color_interOk))
 
              # print("formula: "+"$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),formula)
+
+
+
+
+        # T_ENUNCIADO_RESTA_DIVI
+        for n in [ r for r in ope.reglas if r.tipo ==(T_ENUNCIADO_RESTA_DIVI)  ]:
+            self.ws1.cell(column=n.posx+desp_x, row=n.posy+desp_y,value=n.valor)
+
+
+
 
 
     def graba_hoja(self):

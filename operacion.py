@@ -405,12 +405,13 @@ class Division_con_restas(Division):
                 while int(resto) < int(divisor) and col < len(dividendo):
                     resto = resto + dividendo[col]
                     col += 1
+
                 lenanteriorresto = len(resto)
                 resto = str(int(resto) % int(divisor))
 
                 # añado resta
                 
-                tmp_sustraendo=int(divisor)*int(dividendo[n_resta-1])
+                tmp_sustraendo=int(divisor)*int(str(cociente)[n_resta-1])
                 tmp_sustraendo=str(tmp_sustraendo).zfill(len(resto))
                 self.setXy(col-len(tmp_sustraendo)-1, self.y + 1)
 
@@ -426,13 +427,15 @@ class Division_con_restas(Division):
 
 
                 self.appendRegla(T_FC_RESULTADO_SIGNO_RESTA_DIVI," "*1, col-len(tmp_sustraendo)-1, self.y,
-                                  dividendo[n_resta-1], len(str(dividendo))+n_resta-1,1  )
+                                  str(cociente)[n_resta-1], len(str(dividendo))+n_resta-1,1  )
 
                 self.appendRegla(T_FC_RESULTADO_RESTA_DIVI," "*(len(tmp_sustraendo)+1), col-len(tmp_sustraendo)-1, self.y ,
-                                  dividendo[n_resta-1], len(str(dividendo))+n_resta-1,1  )
+                                  str(cociente)[n_resta-1], len(str(dividendo))+n_resta-1,1  )
 
 
                 n_resta+=1
+                while str(cociente)[n_resta-1] =='0' and len(cociente)>(n_resta-1+1):
+                    n_resta+=1
                 # fin  resta
 
 
@@ -440,6 +443,7 @@ class Division_con_restas(Division):
                 while int(resto) < int(divisor) and col < len(dividendo):  # bajo uno
                     resto = resto + dividendo[col]
                     col += 1
+
 
                 if (len(resto) +1) < lenanteriorresto:
                     resto = '0' + resto

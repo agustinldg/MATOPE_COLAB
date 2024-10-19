@@ -45,6 +45,16 @@ def crea_hoja ():
                b.LoadTerminos(terminos)
                a.add_operacion(b)
 
+
+      terminos=splitope(ope,'/')
+      if len(terminos)==2:
+         if terminos[0] < terminos[1]:
+               errores+=f"En la operacion {i+1}ª ' {ope} '  el divisor es mayor que el dividendo."+"\n"
+         else:
+               b=Division_con_restas() 
+               b.LoadTerminos(terminos)
+               a.add_operacion(b)               
+
       terminos=splitope(ope,'-')
       if len(terminos)==2:
          if terminos[0] < terminos[1]:

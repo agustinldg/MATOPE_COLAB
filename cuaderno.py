@@ -9,8 +9,8 @@ from crea_hoja import crea_hoja
 
 
 
-Nombre_de_la_hoja_Excel="5a_Excel_test"
-Lista_de_operaciones="  42:3 123+4 279992*1 327:1 12+23+45+4344 12:3 12345:6"
+Nombre_de_la_hoja_Excel="test_resta_divi3"
+Lista_de_operaciones=" 12/3 12345/6 327/1 12:3 12345:6 327:1"
 
 Tamano_tipo_de_letra=26  # font size 11
 

@@ -354,3 +354,78 @@ class Division(Operacion):
                 if col >= len(dividendo) and int(resto) < int(divisor):
                     break
             self.appendRegla(T_FC_RESULTADO_RANGE,resto, col-len(resto), self.y )
+
+
+class Division_con_restas(Division):
+        def LoadReglas(self):
+            dividendo=str(self.terminos[0])
+            divisor=str(self.terminos[1])
+            cociente=int(int(dividendo)/int(divisor))
+
+
+            self.setTipo(T_ENUNCIADO)
+            self.setXy(0,0)
+            self.printICadena(str(dividendo))
+            self.printICadena(str(divisor))
+
+            self.setTipo(T_ENUNCIADO_BORDE_INFERIOR_IZQ)
+            self.setXy( len(str(dividendo)),0)
+            self.printICadena(" ")
+            self.setTipo(T_ENUNCIADO_BORDE_INFERIOR)
+            self.printICadena(" "*(max(len(str(cociente)),len(str(divisor)))-1))
+
+            self.setTipo(T_FC_RESULTADO)
+            self.setXy( len(str(dividendo)),1)
+            self.printICadena(str(cociente))
+
+            self.appendRegla(T_FC_RESULTADO_RANGE, str(cociente), len(str(dividendo)),1)
+
+            col = len(str(divisor))
+            resto = str(dividendo)[0:col]
+            self.setTipo(T_FC_RESULTADO)
+            self.setXy(0, 0)
+            lenanteriorresto = 0
+            n_resta=1   #numero de el  sustraendo de la resta 1 correponde al proucto del divisor*conciente[r_resta-1]
+
+            while True:
+                while int(resto) < int(divisor) and col < len(dividendo):
+                    resto = resto + dividendo[col]
+                    col += 1
+                lenanteriorresto = len(resto)
+                resto = str(int(resto) % int(divisor))
+
+                # añado resta
+                
+                tmp_sustraendo=int(divisor)*int(dividendo[n_resta-1])
+                self.setXy(col-len(tmp_sustraendo)-1, self.y + 1)
+
+                self.setTipo(T_ENUNCIADO_RESTA_DIVI)
+                self.printCaracter("-")
+
+                self.setTipo(T_FC_RESULTADO)
+                self.printICadena(tmp_sustraendo)
+
+                
+                self.setTipo(T_FC_RESULTADO_RESTA_DIVI)
+                
+
+                n_resta+=1
+
+
+
+
+                while int(resto) < int(divisor) and col < len(dividendo):  # bajo uno
+                    resto = resto + dividendo[col]
+                    col += 1
+
+                if (len(resto) +1) < lenanteriorresto:
+                    resto = '0' + resto
+                self.setTipo(T_FC_RESULTADO)
+                self.setXy(col-len(resto), self.y + 1)
+                self.printICadena(resto)
+
+                if col >= len(dividendo) and int(resto) < int(divisor):
+                    break
+            self.appendRegla(T_FC_RESULTADO_RANGE,resto, col-len(resto), self.y )
+
+  

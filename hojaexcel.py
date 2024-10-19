@@ -54,10 +54,10 @@ class HojaExcel:
         self.ws1.freeze_panes='A3'
         for n in range(1,int(20*self.celdas_por_operacion/self.operaciones_por_fila)):
             self.ws1.row_dimensions[n].height=calc_size(12)
-        self.ws1.row_dimensions[2].height=calc_size(24)
+        self.ws1.row_dimensions[2].height=calc_size(24+3)   #3 margen extra para prblema excel
 
         for n in range(1,self.operaciones_por_fila*self.celdas_por_operacion+30):
-            self.ws1.column_dimensions[ get_column_letter(n)].width=calc_size(2)
+            self.ws1.column_dimensions[ get_column_letter(n)].width=calc_size(2+3/8) # 3/8 margen exrra para problema excel unidades width =caracteres*8+5
             #self.ws1.column_dimensions[get_column_letter(n)].font =Font(bold=True)
 
 

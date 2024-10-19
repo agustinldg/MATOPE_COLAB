@@ -14,3 +14,7 @@ T_ENUNCIADO_BORDE_INFERIOR=5
 T_ENUNCIADO_BORDE_INFERIOR_IZQ=6
 T_FC_RESULTADO=10
 T_FC_RESULTADO_RANGE=20
+
+T_ENUNCIADO_RESTA_DIVI=8  #el - de las restas auxiliares de las divisiones
+T_FC_RESULTADO_RESTA_DIVI=12  #el borde inforrior de las restas auxiliares de las divisiones
+

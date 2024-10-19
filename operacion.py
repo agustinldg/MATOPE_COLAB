@@ -433,9 +433,7 @@ class Division_con_restas(Division):
                                   str(cociente)[n_resta-1], len(str(dividendo))+n_resta-1,1  )
 
 
-                n_resta+=1
-                while str(cociente)[n_resta-1] =='0' and len(cociente)>(n_resta-1+1):
-                    n_resta+=1
+
                 # fin  resta
 
 
@@ -453,6 +451,12 @@ class Division_con_restas(Division):
 
                 if col >= len(dividendo) and int(resto) < int(divisor):
                     break
+
+                #resta    
+                n_resta+=1
+                while str(cociente)[n_resta-1] =='0' and len(str(cociente))>(n_resta-1+1):
+                    n_resta+=1
+
             self.appendRegla(T_FC_RESULTADO_RANGE,resto, col-len(resto), self.y )
 
   

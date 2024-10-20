@@ -398,7 +398,7 @@ class Division_con_restas(Division):
             resto = str(dividendo)[0:col]
             self.setTipo(T_FC_RESULTADO)
             self.setXy(0, 0)
-            lenanteriorresto = 0
+            anteriorresto = ""
             n_resta=1   #numero de el  sustraendo de la resta 1 correponde al proucto del divisor*conciente[r_resta-1]
 
             while True:
@@ -406,13 +406,13 @@ class Division_con_restas(Division):
                     resto = resto + dividendo[col]
                     col += 1
 
-                lenanteriorresto = len(resto)
+                anteriorresto = resto
                 resto = str(int(resto) % int(divisor))
 
                 # añado resta
                 
                 tmp_sustraendo=int(divisor)*int(str(cociente)[n_resta-1])
-                tmp_sustraendo=str(tmp_sustraendo).zfill(len(resto))
+                tmp_sustraendo=str(tmp_sustraendo).zfill(len(str(int(anteriorresto))))
                 self.setXy(col-len(tmp_sustraendo)-1, self.y + 1)
 
                 self.setTipo(T_ENUNCIADO_RESTA_DIVI)
@@ -437,14 +437,16 @@ class Division_con_restas(Division):
                 # fin  resta
 
 
-
+                digitos_bajados=0
                 while int(resto) < int(divisor) and col < len(dividendo):  # bajo uno
                     resto = resto + dividendo[col]
                     col += 1
+                    digitos_bajados+=1
 
+                #if (len(resto) +1) < len(anteriorresto):
+                #    resto = '0' + resto
 
-                if (len(resto) +1) < lenanteriorresto:
-                    resto = '0' + resto
+                resto=resto.zfill(  len(str(int(anteriorresto)))   + digitos_bajados )    
                 self.setTipo(T_FC_RESULTADO)
                 self.setXy(col-len(resto), self.y + 1)
                 self.printICadena(resto)

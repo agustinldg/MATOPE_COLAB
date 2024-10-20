@@ -53,9 +53,8 @@ class HojaExcel:
     def inicializa(self):
         self.ws1.freeze_panes='A3'
         for n in range(1,int(20*self.celdas_por_operacion/self.operaciones_por_fila)):
-            self.ws1.row_dimensions[n].height=calc_size(12)
-        self.ws1.row_dimensions[2].height=calc_size(24+3)   #3 margen extra para prblema excel
-
+            self.ws1.row_dimensions[n].height=calc_size(12+3) #5 margen extra para prblema al editar con  excel que no deja ver la celda de encima
+        self.ws1.row_dimensions[2].height=calc_size(24)   
         for n in range(1,self.operaciones_por_fila*self.celdas_por_operacion+30):
             self.ws1.column_dimensions[ get_column_letter(n)].width=calc_size(2+3/8) # 3/8 margen exrra para problema excel unidades width =caracteres*8+5
             #self.ws1.column_dimensions[get_column_letter(n)].font =Font(bold=True)
@@ -226,11 +225,41 @@ class HojaExcel:
 
 
 
-        # T_ENUNCIADO_RESTA_DIVI
+        # T_ENUNCIADO_RESTA_DIVI  >-invisibe , lo visibiliza la condicion T_FC_RESULTADO_SIGNO_RESTA_DIVI
         for n in [ r for r in ope.reglas if r.tipo ==(T_ENUNCIADO_RESTA_DIVI)  ]:
             self.ws1.cell(column=n.posx+desp_x, row=n.posy+desp_y,value=n.valor)
+            self.ws1.cell(column=n.posx+desp_x, row=n.posy+desp_y).font=Font(bold=True,size=CFG_FONT_SIZE,color="FFFFFF")
+
+        # T_FC_RESULTADO_SIGNO_RESTA_DIVI #desinvisibiliza el signo menos de las restas auxiliares de las divisiones
+        # si CFG_LINEAS_RESTA_AUX_DIVI_FIJAS=True => siempre visibles
+        for n in [ r for r in ope.reglas if r.tipo ==(T_FC_RESULTADO_SIGNO_RESTA_DIVI)  ]:
+             if CFG_LINEAS_RESTA_AUX_DIVI_FIJAS:
+                 formula="TRUE"
+             else:    
+                formula="$"+get_column_letter(n.test_posx+desp_x)+"$"+str(n.test_posy+desp_y)+'= '+str(n.test_valor)
+                if n.valor==0:
+                    formula='AND(NOT(ISBLANK('+"$"+get_column_letter(n.test_posx+desp_x)+"$"+str(n.test_posy+desp_y)+')),'+formula+')'
+                # formula='AND('+self.celdanivel +'=0,'+formula+')'
+
+             self.ws1.conditional_formatting.add("$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),FormulaRule(formula=[formula], font=Font(bold=True,size=CFG_FONT_SIZE,color="000000")))
+            
+        # T_FC_RESULTADO_RESTA_DIVI  #visibiliza la linea de resta cuando va resolviendose el cociente
+        # si CFG_LINEAS_RESTA_AUX_DIVI_FIJAS=True => siempre visibles
+        for n in [ r for r in ope.reglas if r.tipo ==(T_FC_RESULTADO_RESTA_DIVI)  ]:
+             if CFG_LINEAS_RESTA_AUX_DIVI_FIJAS:
+                 formula="TRUE"
+             else:    
+                formula="$"+get_column_letter(n.test_posx+desp_x)+"$"+str(n.test_posy+desp_y)+'= '+str(n.test_valor)
+                if n.valor==0:
+                    formula='AND(NOT(ISBLANK('+"$"+get_column_letter(n.test_posx+desp_x)+"$"+str(n.test_posy+desp_y)+')),'+formula+')'
+                # formula='AND('+self.celdanivel +'=0,'+formula+')'
 
 
+             rg="$" + get_column_letter(n.posx + desp_x) + "$" + str(n.posy + desp_y) \
+                   + ":$" + get_column_letter(n.posx + desp_x + len(n.valor) - 1) + "$" + str(n.posy + desp_y)
+             self.ws1.conditional_formatting.add(rg,FormulaRule(
+                 formula=[formula], border=Border(bottom=Side(border_style='medium', color="000000"))         ))
+             
 
 
 

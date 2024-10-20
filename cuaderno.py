@@ -9,7 +9,7 @@ from crea_hoja import crea_hoja
 
 
 
-Nombre_de_la_hoja_Excel="test_resta_divi9"
+Nombre_de_la_hoja_Excel="test_resta_divi10"
 Lista_de_operaciones=" 12/3 12345/6 327/1 12:3 12345:6 327:1"
 
 Tamano_tipo_de_letra=26  # font size 11
@@ -49,6 +49,13 @@ builtins.CFG_COLOR_INTERMEDIO_OK=Color_Respuesta_Intermedia_Correcta
 
 builtins.CFG_OPERACIONES_POR_FILA=4
 builtins.CFG_CELDAS_POR_OPERACION=12
+
+
+
+
+builtins.CFG_LINEAS_RESTA_AUX_DIVI_FIJAS=False
+
+
 
 
 builtins.CFG_MARGEN_DERECHO=20

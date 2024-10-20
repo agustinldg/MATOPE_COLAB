@@ -422,8 +422,7 @@ class Division_con_restas(Division):
                 self.printICadena(tmp_sustraendo)
 
                 
-                self.setTipo(T_FC_RESULTADO_RESTA_DIVI)
-                self.printCaracter(" ")
+ 
 
 
                 self.appendRegla(T_FC_RESULTADO_SIGNO_RESTA_DIVI," "*1, col-len(tmp_sustraendo)-1, self.y,

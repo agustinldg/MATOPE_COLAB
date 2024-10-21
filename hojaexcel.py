@@ -136,8 +136,8 @@ class HojaExcel:
         #darkgreenFill = PatternFill("solid", bgColor = colordarkgreen)
 
 
-        color_finalOK=CFG_COLOR_FINAL_OK
-        fill_color_finalOK=PatternFill("solid", bgColor = color_finalOK)
+        # color_finalOK=CFG_COLOR_FINAL_OK
+        # fill_color_finalOK=PatternFill("solid", bgColor = color_finalOK)
 #        fill_color_interOk=PatternFill("solid", bgColor =CFG_COLOR_INTERMEDIO_OK)
          
 
@@ -200,14 +200,14 @@ class HojaExcel:
         celdaformula="$"+get_column_letter(self.y_operacion*self.operaciones_por_fila+ self.x_operacion +1)+"$1"
         self.ws1[celdaformula]="=IF("+formula+",1,0)"
         self.ws1[celdaformula].font=Font(color="FFFFFF")
-        self.ws1.conditional_formatting.add(celdaformula,   FormulaRule(formula=[celdaformula+"=1"], font=Font(color=color_finalOK), fill=fill_color_finalOK))
+        self.ws1.conditional_formatting.add(celdaformula,   FormulaRule(formula=[celdaformula+"=1"],**formatos['cuadritos_linea_superior']))
 
 
         formula="$"+get_column_letter(self.y_operacion*self.operaciones_por_fila+ self.x_operacion +1)+"$1=1"
         formula = 'AND(' + self.celdanivel + '<2,' + formula + ')'
         for rg in rango:
           self.ws1.conditional_formatting.add(rg,
-                                           FormulaRule(formula=[formula], fill=fill_color_finalOK))
+                                           FormulaRule(formula=[formula],stopIfTrue=True, **formatos['respuesta_final_ok']))
 
         # T_FC_RESULTADO
 
@@ -221,8 +221,11 @@ class HojaExcel:
              self.ws1.conditional_formatting.add("$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),FormulaRule(formula=[formula], **formatos['respuesta_intermedia_ok']))
 
              # print("formula: "+"$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),formula)
-
-
+             #Fomato para resltado intermedio mal
+             formula="$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y)+'<> '+str(n.valor)
+             formula='AND(NOT(ISBLANK('+"$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y)+')),'+formula+')'
+             formula='AND('+self.celdanivel +'=0,'+formula+')'
+             self.ws1.conditional_formatting.add("$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),FormulaRule(formula=[formula], **formatos['respuesta_intermedia_ko']))
 
 
         # T_ENUNCIADO_RESTA_DIVI  >-invisibe , lo visibiliza la condicion T_FC_RESULTADO_SIGNO_RESTA_DIVI

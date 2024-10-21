@@ -9,14 +9,14 @@ import re
 
 
 
-Nombre_de_la_hoja_Excel="test_resta_divi12"
+Nombre_de_la_hoja_Excel="test_resta_divi14"
 Lista_de_operaciones=" 12/3 12345/6 327/1 12:3 12345:6 327:1"
 
 Tamano_tipo_de_letra=26  # font size 11
 
 Color_Respuesta_Final_Correcta='2EFE2E'    #2EFE2E darkgreen (el de la primera versin)
 
-Color_Respuesta_Intermedia_Correcta='B3648F'    #E0F8E6 green (el de la lprimera version)
+Color_Respuesta_Intermedia_Correcta='04B431'    #E0F8E6 green (el de la lprimera version)
  
 
 
@@ -45,7 +45,7 @@ builtins.CFG_MODO_SELEC=Modo_Seleccionado
 
 builtins.CFG_COLOR_FINAL_OK=Color_Respuesta_Final_Correcta
 builtins.CFG_COLOR_INTERMEDIO_OK=Color_Respuesta_Intermedia_Correcta
-
+builtins.CFG_COLOR_INTERMEDIO_KO='FF0000'
 
 builtins.CFG_OPERACIONES_POR_FILA=4
 builtins.CFG_CELDAS_POR_OPERACION=12

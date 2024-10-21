@@ -138,7 +138,7 @@ class HojaExcel:
 
         color_finalOK=CFG_COLOR_FINAL_OK
         fill_color_finalOK=PatternFill("solid", bgColor = color_finalOK)
-        fill_color_interOk=PatternFill("solid", bgColor =CFG_COLOR_INTERMEDIO_OK)
+#        fill_color_interOk=PatternFill("solid", bgColor =CFG_COLOR_INTERMEDIO_OK)
          
 
 
@@ -218,7 +218,7 @@ class HojaExcel:
 
              formula='AND('+self.celdanivel +'=0,'+formula+')'
 
-             self.ws1.conditional_formatting.add("$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),FormulaRule(formula=[formula], fill=fill_color_interOk))
+             self.ws1.conditional_formatting.add("$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),FormulaRule(formula=[formula], **formatos['respuesta_intermedia_ok']))
 
              # print("formula: "+"$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),formula)
 

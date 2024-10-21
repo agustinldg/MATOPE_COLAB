@@ -3,13 +3,13 @@
 import builtins
 import re
 
-from crea_hoja import crea_hoja
+
 
 # builtins.built_in_no_usage = set(dir(__builtins__)+['built_in_no_usage']) # Set of all built-in names
 
 
 
-Nombre_de_la_hoja_Excel="test_resta_divi10"
+Nombre_de_la_hoja_Excel="test_resta_divi12"
 Lista_de_operaciones=" 12/3 12345/6 327/1 12:3 12345:6 327:1"
 
 Tamano_tipo_de_letra=26  # font size 11
@@ -72,7 +72,7 @@ builtins.CFg_USER="Developer"
 test_CFG_COLOR_FINAL_OK=bool(re.match(r"^[A-Fa-f0-9]{6}$", CFG_COLOR_FINAL_OK))
 test_CFG_COLOR_INTERMEDIO_OK=bool(re.match(r"^[A-Fa-f0-9]{6}$", CFG_COLOR_INTERMEDIO_OK))
 
-
+from crea_hoja import crea_hoja
 
 if  test_CFG_COLOR_FINAL_OK and test_CFG_COLOR_INTERMEDIO_OK:
     crea_hoja()

@@ -9,7 +9,7 @@ import re
 
 
 
-Nombre_de_la_hoja_Excel="test_resta_divi14"
+Nombre_de_la_hoja_Excel="test_resta_divi18"
 Lista_de_operaciones=" 12/3 12345/6 327/1 12:3 12345:6 327:1"
 
 Tamano_tipo_de_letra=26  # font size 11
@@ -83,3 +83,7 @@ else:
     print ('Los colores se definen con 6 carácteres de 0 a 9 ó de A a F.  Ejemplo 2EFE2E')
     print ('Vuelve a ejecutar el proceso despues hacer la correción')
     print ('')
+
+
+# TO_DO comprobar google formatos , margenes con el escrito fuera, tamño (por el recalculo para probela de excel que no deja ver)
+#       

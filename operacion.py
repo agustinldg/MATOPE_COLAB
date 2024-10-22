@@ -460,4 +460,23 @@ class Division_con_restas(Division):
 
             self.appendRegla(T_FC_RESULTADO_RANGE,resto, col-len(resto), self.y )
 
+            # relleno las casillas vacias con <>' ' par que se pongan en error T_FC_RESULTADO  si se rellenan
+
+            
+            celdas_rellenas=  {(regl.posx+n,regl.posy) for regl in self.reglas  for n in range(len(str( regl.valor) ))  }
+            
+       
+
+            cuadricula=  {(x,y)  for x in   range(
+                              min( coordenada[0] for coordenada in celdas_rellenas),
+                              max( coordenada[0] for coordenada in celdas_rellenas) +2)  
+                                    for y in   range(
+                                        min( coordenada[1] for coordenada in celdas_rellenas),
+                                        max( coordenada[1] for coordenada in celdas_rellenas) +2)  
+                          }
+
+            for coordenada in (cuadricula-celdas_rellenas):
+                self.appendRegla(T_FC_ESCRITO_FUERA,'" "', coordenada[0], coordenada[1] )
+
+
   

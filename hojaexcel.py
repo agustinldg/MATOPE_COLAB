@@ -264,6 +264,12 @@ class HojaExcel:
                  formula=[formula], border=Border(bottom=Side(border_style='medium', color="000000"))         ))
              
 
+        # T_FC_ESCRITO_FUERA  >-escrito en casillas fuera de la operacion , No se debe escribir nada ,por ejemplo debajo del cociente
+        for n in [ r for r in ope.reglas if r.tipo ==(T_FC_ESCRITO_FUERA)  ]:
+             formula="$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y)+'<> '+str(n.valor)
+             formula='AND(NOT(ISBLANK('+"$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y)+')),'+formula+')'
+             formula='AND('+self.celdanivel +'=0,'+formula+')'    
+             self.ws1.conditional_formatting.add("$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),FormulaRule(formula=[formula], **formatos['respuesta_escrita_fuera']))
 
 
     def graba_hoja(self):

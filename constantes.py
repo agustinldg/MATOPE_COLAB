@@ -19,6 +19,8 @@ T_ENUNCIADO_RESTA_DIVI=8  #el - de las restas auxiliares de las divisiones
 T_FC_RESULTADO_RESTA_DIVI=12  #el borde inforrior de las restas auxiliares de las divisiones
 T_FC_RESULTADO_SIGNO_RESTA_DIVI=13  #desinvisibiliza el signo menos de las restas auxiliares de las divisiones
 
+T_FC_ESCRITO_FUERA=30  # escribe fuera de las casillas de la operacion
+
 
 from openpyxl.styles import Font, PatternFill, Border, Side,Alignment
 
@@ -31,7 +33,7 @@ formatos = {
     'cuadritos_linea_superior': {
         'font':  Font(bold=True, size=CFG_FONT_SIZE, color=CFG_COLOR_FINAL_OK),
         'fill':  PatternFill("solid", bgColor=CFG_COLOR_FINAL_OK)},  # respuesta intermedia OK
-
+    'respuesta_escrita_fuera': {'fill':  PatternFill("solid", bgColor='FF00FF' )},  # escrito fuera de sitio mahenta FF00FF
 
     'backup_respuesta_intermedia_ok': {'fill': PatternFill("solid", bgColor =CFG_COLOR_INTERMEDIO_OK)},  # respuesta intermedia OK
     'key2': 'value2',

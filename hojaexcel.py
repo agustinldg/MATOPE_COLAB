@@ -17,6 +17,7 @@ from openpyxl.styles.differential import DifferentialStyle
 from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 # from openpyxl.styles.colors import RED,GREEN,DARKGREEN,DARKRED
 from openpyxl.worksheet.datavalidation import DataValidation
+from math import ceil
 
 from constantes import *
 # import builtins
@@ -36,10 +37,11 @@ def modo_defecto():
 
 
 class HojaExcel:
-    def __init__ (self, nombre, operaciones_por_fila=3, celdas_por_operacion=10):
+    def __init__ (self, nombre, operaciones_por_fila=3, celdas_por_operacion=10 , numero_operaciones=20):
         self.nombre = nombre
         self.operaciones_por_fila = operaciones_por_fila
         self.celdas_por_operacion = celdas_por_operacion
+        self.numero_operaciones = numero_operaciones
 
         self.operaciones=[]
         self.wb = Workbook()
@@ -53,17 +55,20 @@ class HojaExcel:
     def inicializa(self):
         self.ws1.freeze_panes='A3'
 
+        self.ws1.row_dimensions[2].height=calc_size(24)  
+        max_x=max(46,self.operaciones_por_fila*self.celdas_por_operacion+CFG_MARGEN_X*2)  #max 46 para que cuadren los titulos
+        max_y=self.celdas_por_operacion*(ceil(self.numero_operaciones/self.operaciones_por_fila))+CFG_MARGEN_Y*2+10
 
-        for n in range(1,int(20*self.celdas_por_operacion/self.operaciones_por_fila)):
+        for n in range(1,max_y):
             self.ws1.row_dimensions[n].height=calc_size(12+3) #5 margen extra para prblema al editar con  excel que no deja ver la celda de encima
-        self.ws1.row_dimensions[2].height=calc_size(24)   
-        for n in range(1,self.operaciones_por_fila*self.celdas_por_operacion+30):
+ 
+        for n in range(1,max_x):
             self.ws1.column_dimensions[ get_column_letter(n)].width=calc_size(2+3/8) # 3/8 margen exrra para problema excel unidades width =caracteres*8+5
             #self.ws1.column_dimensions[get_column_letter(n)].font =Font(bold=True)
 
 
-        for y in range(1,int(20*self.celdas_por_operacion/self.operaciones_por_fila)):
-            for x in range(1, self.operaciones_por_fila * self.celdas_por_operacion + 30):
+        for y in range(1,max_y):
+            for x in range(1, max_x):
                 self.ws1.cell(row=y, column=x).alignment  = Alignment(horizontal="center", vertical="center")
                 self.ws1.cell(row=y, column=x).font=Font(bold=True,size=CFG_FONT_SIZE)
 # al = Alignment(horizontal="center", vertical="center")

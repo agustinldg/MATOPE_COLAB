@@ -9,8 +9,8 @@ import re
 
 
 
-Nombre_de_la_hoja_Excel="test_resta_divi18"
-Lista_de_operaciones=" 12/3 12345/6 327/1 12:3 12345:6 327:1"
+Nombre_de_la_hoja_Excel="test_resta_divi20"
+Lista_de_operaciones=" 12/3 12345/6 327/1 12:3 12345:6 327:1 17+19+16  34-1 12345*7"
 
 Tamano_tipo_de_letra=26  # font size 11
 

@@ -52,6 +52,8 @@ class HojaExcel:
 
     def inicializa(self):
         self.ws1.freeze_panes='A3'
+
+
         for n in range(1,int(20*self.celdas_por_operacion/self.operaciones_por_fila)):
             self.ws1.row_dimensions[n].height=calc_size(12+3) #5 margen extra para prblema al editar con  excel que no deja ver la celda de encima
         self.ws1.row_dimensions[2].height=calc_size(24)   
@@ -60,11 +62,17 @@ class HojaExcel:
             #self.ws1.column_dimensions[get_column_letter(n)].font =Font(bold=True)
 
 
-        for y in range(1,int(120*self.celdas_por_operacion/self.operaciones_por_fila)):
+        for y in range(1,int(20*self.celdas_por_operacion/self.operaciones_por_fila)):
             for x in range(1, self.operaciones_por_fila * self.celdas_por_operacion + 30):
                 self.ws1.cell(row=y, column=x).alignment  = Alignment(horizontal="center", vertical="center")
                 self.ws1.cell(row=y, column=x).font=Font(bold=True,size=CFG_FONT_SIZE)
 # al = Alignment(horizontal="center", vertical="center")
+
+
+#         style = Style(font )
+# for col in 'ABCD':
+#      ws._styles[col] = style
+
 
 
 

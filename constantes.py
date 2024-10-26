@@ -33,9 +33,9 @@ formatos = {
     'cuadritos_linea_superior': {
         'font':  Font(bold=True, size=CFG_FONT_SIZE, color=CFG_COLOR_FINAL_OK),
         'fill':  PatternFill("solid", bgColor=CFG_COLOR_FINAL_OK)},  # respuesta intermedia OK
-    'respuesta_escrita_fuera': {'fill':  PatternFill("solid", bgColor='FF00FF' )},  # escrito fuera de sitio mahenta FF00FF
+    'respuesta_escrita_fuera': {'fill':  PatternFill("solid", bgColor='FF6666' )},  # escrito fuera de sitio mahenta FF00FF
 
-    'backup_respuesta_intermedia_ok': {'fill': PatternFill("solid", bgColor =CFG_COLOR_INTERMEDIO_OK)},  # respuesta intermedia OK
+    'backupxxxx_respuesta_intermedia_ok': {'fill': PatternFill("solid", bgColor =CFG_COLOR_INTERMEDIO_OK)},  # respuesta intermedia OK
     'key2': 'value2',
     'key3': 'value3'
 }

@@ -86,4 +86,4 @@ else:
 
 
 # TO_DO comprobar google formatos , margenes con el escrito fuera, tamño (por el recalculo para probela de excel que no deja ver)
-#       
+#       celdas por operacion calcularlo dinamicamente

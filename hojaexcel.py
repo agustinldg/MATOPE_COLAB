@@ -197,14 +197,15 @@ class HojaExcel:
         # T_ENUNCIADO_BORDE_INFERIOR
         thick = Side(border_style='medium', color="000000")
         bottom = Border( bottom=thick)
+        
+
         for n in [ r for r in ope.reglas if r.tipo==T_ENUNCIADO_BORDE_INFERIOR]:
-            self.ws1.cell(column=n.posx + desp_x, row=n.posy + desp_y).border=bottom
+            self.ws1.cell(column=n.posx + desp_x, row=n.posy + desp_y).border=Border( **formatos['enunciado_borde_inferior'])
 
         # T_ENUNCIADO_BORDE_INFERIOR_IZQ
-        thick = Side(border_style='medium', color="000000")
-        bottom = Border( bottom=thick,left=thick)
+
         for n in [ r for r in ope.reglas if r.tipo==T_ENUNCIADO_BORDE_INFERIOR_IZQ]:
-            self.ws1.cell(column=n.posx + desp_x, row=n.posy + desp_y).border=bottom
+            self.ws1.cell(column=n.posx + desp_x, row=n.posy + desp_y).border=Border( **formatos['enunciado_borde_inferior_izq'])
 
 
         # T_FC_RESULTADO_RANGE
@@ -297,7 +298,7 @@ class HojaExcel:
              rg="$" + get_column_letter(n.posx + desp_x) + "$" + str(n.posy + desp_y) \
                    + ":$" + get_column_letter(n.posx + desp_x + len(n.valor) - 1) + "$" + str(n.posy + desp_y)
              self.ws1.conditional_formatting.add(rg,FormulaRule(
-                 formula=[formula], border=Border(bottom=Side(border_style='medium', color="000000"))         ))
+                 formula=[formula], border=Border( **formatos['enunciado_borde_inferior_resta_div'])  )  )
              
 
         # T_FC_ESCRITO_FUERA  >-escrito en casillas fuera de la operacion , No se debe escribir nada ,por ejemplo debajo del cociente

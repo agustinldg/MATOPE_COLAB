@@ -35,10 +35,17 @@ formatos = {
         'fill':  PatternFill("solid", bgColor=CFG_COLOR_FINAL_OK)},  # respuesta intermedia OK
     'respuesta_escrita_fuera': {'fill':  PatternFill("solid", bgColor='FF6666' )},  # escrito fuera de sitio mahenta FF00FF
 
+    'enunciado_borde_inferior': {
+            "bottom": Side(border_style='thick', color="000000")}, #T_ENUNCIADO_BORDE_INFERIOR
+    'enunciado_borde_inferior_izq': {
+            "bottom": Side(border_style='thick', color="000000"),
+            "left":   Side(border_style='thick', color="000000") },      #T_ENUNCIADO_BORDE_INFERIOR_IZQ      
+    'enunciado_borde_inferior_resta_div': {
+            "bottom":Side(border_style='medium', color="000000")}, #T_ENUNCIADO_RESTA_DIVI (linea auxiliar de las restas haciendo divisiones)
+
     'backupxxxx_respuesta_intermedia_ok': {'fill': PatternFill("solid", bgColor =CFG_COLOR_INTERMEDIO_OK)},  # respuesta intermedia OK
     'key2': 'value2',
     'key3': 'value3'
 }
 
 #        fill_color_interOk=PatternFill("solid", bgColor =CFG_COLOR_INTERMEDIO_OK)
-

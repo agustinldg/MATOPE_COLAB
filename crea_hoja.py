@@ -16,8 +16,8 @@ def splitope(fope,simbolo_ope):
 def crea_hoja ():
 
    opes=CFG_OPERACIONES.split()
-   
-   a=HojaExcel(f'{CFG_NOMBRE_FICHERO}.xlsx',CFG_OPERACIONES_POR_FILA,CFG_CELDAS_POR_OPERACION, len(opes))
+
+   a=HojaExcel(f'{CFG_NOMBRE_FICHERO}.xlsx',CFG_OPERACIONES_POR_FILA,CFG_CELDAS_POR_OPERACION)
 
  
    errores="\n"

@@ -37,22 +37,29 @@ def modo_defecto():
 
 
 class HojaExcel:
-    def __init__ (self, nombre, operaciones_por_fila=3, celdas_por_operacion=10 , numero_operaciones=20):
+    def __init__ (self, nombre, operaciones_por_fila=3, celdas_por_operacion=10 ):
         self.nombre = nombre
         self.operaciones_por_fila = operaciones_por_fila
         self.celdas_por_operacion = celdas_por_operacion
-        self.numero_operaciones = numero_operaciones
+        self.numero_operaciones = None
+
 
         self.operaciones=[]
+
+
+    def inicializa(self):
+
+
         self.wb = Workbook()
         self.ws1 = self.wb.active
         self.ws1.title = "Operaciones"
 
         self.celdanivel="$N$2"
         self.celdanivelcombo="$H$2"
-        self.inicializa()
+        
 
-    def inicializa(self):
+
+
         self.ws1.freeze_panes='A3'
 
         self.ws1.row_dimensions[2].height=calc_size(24)  
@@ -130,7 +137,9 @@ class HojaExcel:
 
 
     def carga_operaciones(self):
-
+        
+        self.numero_operaciones=len(self.operaciones)
+        self.inicializa()
 
         self.x_operacion=0
         self.y_operacion=0

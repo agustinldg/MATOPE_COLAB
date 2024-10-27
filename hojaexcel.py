@@ -195,9 +195,6 @@ class HojaExcel:
             self.ws1.cell(column=n.posx+desp_x, row=n.posy+desp_y,value=n.valor)
 
         # T_ENUNCIADO_BORDE_INFERIOR
-        thick = Side(border_style='medium', color="000000")
-        bottom = Border( bottom=thick)
-        
 
         for n in [ r for r in ope.reglas if r.tipo==T_ENUNCIADO_BORDE_INFERIOR]:
             self.ws1.cell(column=n.posx + desp_x, row=n.posy + desp_y).border=Border( **formatos['enunciado_borde_inferior'])

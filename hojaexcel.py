@@ -137,8 +137,32 @@ class HojaExcel:
 
 
     def carga_operaciones(self):
-        
+
         self.numero_operaciones=len(self.operaciones)
+
+        # calcula CFG_CELDAS_POR_OPERACION (12 defecto acterior)
+
+        coordenadas_regl_ope= [  [ (regl.posx,regl.posy,regl.posx+len(str( regl.valor))-1 ) for  regl in ope.reglas if regl.tipo!=T_FC_ESCRITO_FUERA ] for ope in self.operaciones ]
+        # (x para minimos,y, x para maximos) por ope
+
+        width_ope =  (   max( regl[2] for regl in ope) - min( regl[0]  for regl in ope) +1  for ope in coordenadas_regl_ope)
+        height_ope=  (   max( regl[1] for regl in ope) - min( regl[1]  for regl in ope) +1  for ope in coordenadas_regl_ope)
+        debug=list(width_ope)
+        height_debug=list(height_ope)
+            #         celdas_rellenas=  {(regl.posx+n,regl.posy) for regl in self.reglas  for n in range(len(str( regl.valor) ))  }
+            
+       
+
+            # cuadricula=  {(x,y)  for x in   range(
+            #                   min( coordenada[0] for coordenada in celdas_rellenas),
+            #                   max( coordenada[0] for coordenada in celdas_rellenas) +1)  
+            #                         for y in   range(
+            #                             min( coordenada[1] for coordenada in celdas_rellenas),
+            #                             max( coordenada[1] for coordenada in celdas_rellenas) +1)  
+            #               }
+
+
+        # fin calcula CFG_CELDAS_POR_OPERACION (12 defecto acterior)
         self.inicializa()
 
         self.x_operacion=0

@@ -9,9 +9,12 @@ import re
 
 
 
-Nombre_de_la_hoja_Excel="test_resta_divi21"
-Lista_de_operaciones=" 12/3 12345/6 327/1 12:3 12345:6 327:1 17+19+16  34-1 12345*7"
-
+Nombre_de_la_hoja_Excel="test_resta_divi34"
+# Lista_de_operaciones=" 12/3 12345/6 327/1 12:3 12345:6 327:1 17+19+16  34-1 12345*7"
+# Lista_de_operaciones=" 12/3 123/6 327/1 12:3 123:6 327:1 17+19+16  34-1 12345*7"
+#Lista_de_operaciones=" 4-3 9-6 3-1 4-3 1+6 3*1 1+6  3-1 1+7"
+#Lista_de_operaciones=" 4/3 9-6 3-1 4-3 6:6 3*1 1+6  3-1 1+7"
+Lista_de_operaciones=" 4/3 9-6 3-1 4-3 6:6 3*1 123456789012345678901/12  3-1 1+7"
 Tamano_tipo_de_letra=26  # font size 11
 
 Color_Respuesta_Final_Correcta='2EFE2E'    #2EFE2E darkgreen (el de la primera versin)
@@ -48,7 +51,7 @@ builtins.CFG_COLOR_INTERMEDIO_OK=Color_Respuesta_Intermedia_Correcta
 builtins.CFG_COLOR_INTERMEDIO_KO='FF0000'
 
 builtins.CFG_OPERACIONES_POR_FILA=4
-builtins.CFG_CELDAS_POR_OPERACION=12
+builtins.CFG_CELDAS_POR_OPERACION=2  #poner 4 por lo mmenso cambiar nombre a CFG_MIN_CELDAS_POR_OPERACION
 
 
 

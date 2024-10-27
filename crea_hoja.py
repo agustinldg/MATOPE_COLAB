@@ -17,7 +17,7 @@ def crea_hoja ():
 
    opes=CFG_OPERACIONES.split()
 
-   a=HojaExcel(f'{CFG_NOMBRE_FICHERO}.xlsx',CFG_OPERACIONES_POR_FILA,CFG_CELDAS_POR_OPERACION)
+   a=HojaExcel(f'{CFG_NOMBRE_FICHERO}.xlsx',CFG_OPERACIONES_POR_FILA)
 
  
    errores="\n"

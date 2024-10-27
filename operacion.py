@@ -7,6 +7,9 @@ Created on Sat Dec  2 21:53:38 2017
 """
 from constantes import *
 import random
+from decimal import Decimal, getcontext
+getcontext().prec = 100
+
 
 class Regla:
     def __init__(self, tipo, valor, posx,posy , test_valor=None,test_posx=None,test_posy=None):
@@ -323,7 +326,7 @@ class Division(Operacion):
         def LoadReglas(self):
             dividendo=str(self.terminos[0])
             divisor=str(self.terminos[1])
-            cociente=int(int(dividendo)/int(divisor))
+            cociente=int(Decimal(dividendo)/Decimal(divisor))   #Decimal para tener precisin hasta getcontext().prec=100 cargado al inicio
 
 
             self.setTipo(T_ENUNCIADO)
@@ -374,7 +377,8 @@ class Division_con_restas(Division):
         def LoadReglas(self):
             dividendo=str(self.terminos[0])
             divisor=str(self.terminos[1])
-            cociente=int(int(dividendo)/int(divisor))
+            #cociente=int(int(dividendo)/int(divisor))
+            cociente=int(Decimal(dividendo)/Decimal(divisor))   #Decimal para tener precisin hasta getcontext().prec=100 cargado al inicio
 
 
             self.setTipo(T_ENUNCIADO)

@@ -106,7 +106,7 @@ class HojaExcel:
         dv.add(self.ws1[celdanivelcombo])
 
         self.ws1[celdanivel]='=IF('+celdanivelcombo+'="Fácil",0,IF('+celdanivelcombo+'= "Pro",1,IF('+celdanivelcombo+'= "SuperPro",2,"")))'
-        self.ws1[celdanivel].font =Font(color="FFFFFF")
+        self.ws1[celdanivel].font =Font(**formatos['tinta_invisible'])
 
 # RESUELTAS
         self.ws1.merge_cells('P2:V2')
@@ -233,7 +233,7 @@ class HojaExcel:
 
         celdaformula="$"+get_column_letter(self.y_operacion*self.operaciones_por_fila+ self.x_operacion +1)+"$1"
         self.ws1[celdaformula]="=IF("+formula+",1,0)"
-        self.ws1[celdaformula].font=Font(color="FFFFFF")
+        self.ws1[celdaformula].font=Font(**formatos['tinta_invisible'])
         self.ws1.conditional_formatting.add(celdaformula,   FormulaRule(formula=[celdaformula+"=1"],**formatos['cuadritos_linea_superior']))
 
 
@@ -265,7 +265,12 @@ class HojaExcel:
         # T_ENUNCIADO_RESTA_DIVI  >-invisibe , lo visibiliza la condicion T_FC_RESULTADO_SIGNO_RESTA_DIVI
         for n in [ r for r in ope.reglas if r.tipo ==(T_ENUNCIADO_RESTA_DIVI)  ]:
             self.ws1.cell(column=n.posx+desp_x, row=n.posy+desp_y,value=n.valor)
-            self.ws1.cell(column=n.posx+desp_x, row=n.posy+desp_y).font=Font(bold=True,size=CFG_FONT_SIZE,color="FFFFFF")
+            self.ws1.cell(column=n.posx+desp_x, row=n.posy+desp_y).font=Font(**formatos['tinta_invisible'])
+
+
+
+
+
 
         # T_FC_RESULTADO_SIGNO_RESTA_DIVI #desinvisibiliza el signo menos de las restas auxiliares de las divisiones
         # si CFG_LINEAS_RESTA_AUX_DIVI_FIJAS=True => siempre visibles
@@ -278,7 +283,7 @@ class HojaExcel:
                     formula='AND(NOT(ISBLANK('+"$"+get_column_letter(n.test_posx+desp_x)+"$"+str(n.test_posy+desp_y)+')),'+formula+')'
                 # formula='AND('+self.celdanivel +'=0,'+formula+')'
 
-             self.ws1.conditional_formatting.add("$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),FormulaRule(formula=[formula], font=Font(bold=True,size=CFG_FONT_SIZE,color="000000")))
+             self.ws1.conditional_formatting.add("$"+get_column_letter(n.posx+desp_x)+"$"+str(n.posy+desp_y),FormulaRule(formula=[formula], font=Font(**formatos['tinta_defecto'])))
             
         # T_FC_RESULTADO_RESTA_DIVI  #visibiliza la linea de resta cuando va resolviendose el cociente
         # si CFG_LINEAS_RESTA_AUX_DIVI_FIJAS=True => siempre visibles

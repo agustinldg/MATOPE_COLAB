@@ -9,7 +9,7 @@ import re
 
 
 
-Nombre_de_la_hoja_Excel="test_resta_divi36"
+Nombre_de_la_hoja_Excel="test_resta_divi37"
 Lista_de_operaciones=" 12/3 12345/6 327/1 12:3 12345:6 327:1 17+19+16  34-1 12345*7"
 # Lista_de_operaciones=" 12/3 123/6 327/1 12:3 123:6 327:1 17+19+16  34-1 12345*7"
 #Lista_de_operaciones=" 4-3 9-6 3-1 4-3 1+6 3*1 1+6  3-1 1+7"
@@ -50,7 +50,7 @@ builtins.CFG_COLOR_FINAL_OK=Color_Respuesta_Final_Correcta
 builtins.CFG_COLOR_INTERMEDIO_OK=Color_Respuesta_Intermedia_Correcta
 builtins.CFG_COLOR_INTERMEDIO_KO='FF0000'
 
-builtins.CFG_OPERACIONES_POR_FILA=4
+builtins.CFG_OPERACIONES_POR_FILA=1
 builtins.CFG_CELDAS_POR_OPERACION=2  #poner 4 por lo mmenso cambiar nombre a CFG_MIN_CELDAS_POR_OPERACION
 
 

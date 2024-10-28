@@ -9,7 +9,7 @@ import re
 
 
 
-Nombre_de_la_hoja_Excel="test_resta_divi37"
+Nombre_de_la_hoja_Excel="test_resta_divi38"
 Lista_de_operaciones=" 12/3 12345/6 327/1 12:3 12345:6 327:1 17+19+16  34-1 12345*7"
 # Lista_de_operaciones=" 12/3 123/6 327/1 12:3 123:6 327:1 17+19+16  34-1 12345*7"
 #Lista_de_operaciones=" 4-3 9-6 3-1 4-3 1+6 3*1 1+6  3-1 1+7"

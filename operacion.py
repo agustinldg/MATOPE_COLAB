@@ -472,11 +472,11 @@ class Division_con_restas(Division):
        
 
             cuadricula=  {(x,y)  for x in   range(
-                              min( coordenada[0] for coordenada in celdas_rellenas),
-                              max( coordenada[0] for coordenada in celdas_rellenas) +1)  
+                              min( coordenada[0] for coordenada in celdas_rellenas)-1,
+                              max( coordenada[0] for coordenada in celdas_rellenas) +1+1)  
                                     for y in   range(
                                         min( coordenada[1] for coordenada in celdas_rellenas),
-                                        max( coordenada[1] for coordenada in celdas_rellenas) +1)  
+                                        max( coordenada[1] for coordenada in celdas_rellenas) +1+1)  
                           }
 
             for coordenada in (cuadricula-celdas_rellenas):

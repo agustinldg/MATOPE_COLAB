@@ -140,7 +140,7 @@ class HojaExcel:
 
         self.numero_operaciones=len(self.operaciones)
 
-        # calcula CFG_CELDAS_POR_OPERACION (12 defecto acterior)
+        # calcula CELDAS_POR_OPERACION (12 defecto acterior)
 
         coordenadas_regl_ope= [  [ (regl.posx,regl.posy,regl.posx+len(str( regl.valor))-1 ) for  regl in ope.reglas if regl.tipo!=T_FC_ESCRITO_FUERA ] for ope in self.operaciones ]
         # (x para minimos,y, x para maximos) por ope
@@ -150,9 +150,9 @@ class HojaExcel:
         # debug=list(width_ope)
         # height_debug=list(height_ope)
             
-        self.celdas_por_operacion=max(width_max+2,height_max+2,CFG_CELDAS_POR_OPERACION)
+        self.celdas_por_operacion=max(width_max+2,height_max+2,CFG_MIN_CELDAS_POR_OPERACION)
 
-        # fin calcula CFG_CELDAS_POR_OPERACION (12 defecto acterior)
+        # fin calcula CELDAS_POR_OPERACION (12 defecto acterior)
         self.inicializa()
 
         self.x_operacion=0

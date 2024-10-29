@@ -46,7 +46,7 @@ formatos = {
     'cuadritos_linea_superior': {
         'font':  Font(bold=True, size=CFG_FONT_SIZE, color=CFG_COLOR_FINAL_OK),
         'fill':  PatternFill("solid", bgColor=CFG_COLOR_FINAL_OK)},  # respuesta intermedia OK
-    'respuesta_escrita_fuera': {'fill':  PatternFill("solid", bgColor='FF6666' )},  # escrito fuera de sitio mahenta FF00FF
+    'respuesta_escrita_fuera': {'fill':  PatternFill("solid", bgColor=CFG_COLOR_ESCRITO_FUERA )},  # escrito fuera de sitio rojo claro FF6666
 
     'enunciado_borde_inferior': {
             "bottom": Side(border_style='thick', color=color_tinta_defecto)}, #T_ENUNCIADO_BORDE_INFERIOR

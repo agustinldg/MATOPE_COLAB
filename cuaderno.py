@@ -81,6 +81,14 @@ builtins.CFG_MARGEN_Y=3
 builtins.CFg_USER="Developer"
 
 
+from secretos import *
+
+
+builtins.CGF_DOWNLOAD=True
+builtins.CFG_SUBFOLDER="MIS matopes"
+builtins.CFG_SEND_TO=SECRE_email
+
+
 test_CFG_COLOR_FINAL_OK=bool(re.match(r"^[A-Fa-f0-9]{6}$", CFG_COLOR_FINAL_OK))
 test_CFG_COLOR_INTERMEDIO_OK=bool(re.match(r"^[A-Fa-f0-9]{6}$", CFG_COLOR_INTERMEDIO_OK))
 test_CFG_COLOR_INTERMEDIO_KO=bool(re.match(r"^[A-Fa-f0-9]{6}$", CFG_COLOR_INTERMEDIO_KO))

@@ -174,3 +174,16 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+
+
+
+
+
+
+
+Untitled-1.ipynb
+*.ipynb
+
+secretos.py
+

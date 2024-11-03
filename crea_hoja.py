@@ -141,5 +141,5 @@ def crea_hoja ():
    else:
       print("Hoja de Cálculo generada.")        
 
-   return(response_SE)
+   return(response_SE.json())
 

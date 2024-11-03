@@ -9,7 +9,7 @@ import re
 
 
 
-Nombre_de_la_hoja_Excel="test_resta_div40"
+Nombre_de_la_hoja_Excel="supertest1"
 Lista_de_operaciones=" 12/3 12345/6 327/1 12:3 12345:6 327:1 17+19+16  34-1 12345*7"
 # Lista_de_operaciones=" 12/3 123/6 327/1 12:3 123:6 327:1 17+19+16  34-1 12345*7"
 #Lista_de_operaciones=" 4-3 9-6 3-1 4-3 1+6 3*1 1+6  3-1 1+7"
@@ -34,7 +34,7 @@ Modo_Seleccionado="SuperPro"
 
 Lineas_restas_auxiliares_en_divisiones_fijas=False
 
-Minimo_celdas_por_operacion=4     #poner 4 por lo mmenso 
+Minimo_celdas_por_operacion=3     #poner 4 por lo mmenso 
 
 # @title Texto de título predeterminado
 # @markdown **das d as**
@@ -87,7 +87,7 @@ from secretos import *
 builtins.CGF_DOWNLOAD=True
 builtins.CFG_SUBFOLDER="MIS matopes"
 builtins.CFG_SEND_TO=SECRE_email
-
+builtins.CFG_url_se=SECRE_url_se
 
 test_CFG_COLOR_FINAL_OK=bool(re.match(r"^[A-Fa-f0-9]{6}$", CFG_COLOR_FINAL_OK))
 test_CFG_COLOR_INTERMEDIO_OK=bool(re.match(r"^[A-Fa-f0-9]{6}$", CFG_COLOR_INTERMEDIO_OK))
@@ -98,7 +98,7 @@ test_CFG_COLOR_ESCRITO_FUERA=bool(re.match(r"^[A-Fa-f0-9]{6}$", CFG_COLOR_ESCRIT
 from crea_hoja import crea_hoja
 
 if  test_CFG_COLOR_FINAL_OK and test_CFG_COLOR_INTERMEDIO_OK and test_CFG_COLOR_INTERMEDIO_KO and test_CFG_COLOR_ESCRITO_FUERA :
-    crea_hoja()
+    response_SE=crea_hoja()
 else:
     print ('')
     print (f'ERROR EN LA DEFINICION de "Color_Respuesta_Final_Correcta" = {CFG_COLOR_FINAL_OK} ' if not test_CFG_COLOR_FINAL_OK else "" )

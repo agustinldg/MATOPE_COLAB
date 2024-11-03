@@ -1,3 +1,4 @@
+import base64
 from hojaexcel import *
 from constantes import *
 from datetime import datetime
@@ -12,6 +13,35 @@ def splitope(fope,simbolo_ope):
    except ValueError as e:   
       fope=[]  
    return   fope  
+
+
+def matope_save_mail():
+
+   # Read the file and encode it in base64
+   with open(f'{CFG_NOMBRE_FICHERO}.xlsx', "rb") as file:
+       file_data = base64.b64encode(file.read()).decode("utf-8")
+       
+   url = CFG_url_se
+   payload = json.dumps({
+      "filename":  f'{CFG_NOMBRE_FICHERO}.xlsx',
+      "file":   file_data     ,
+      "subfolder": CFG_SUBFOLDER,
+      "email": CFG_SEND_TO,
+      "operaciones" :CFG_OPERACIONES  })
+   headers = {
+   'Content-Type': 'application/json'
+   }
+
+   response = requests.request("POST", url, headers=headers, data=payload)
+
+   if not response.ok:
+     print(response.text)
+   else:
+     print("folder & send OK")   
+   return(response)  
+
+
+
 
 def crea_hoja ():
 
@@ -71,6 +101,7 @@ def crea_hoja ():
    if errores =="\n" :
       a.carga_operaciones()
       a.graba_hoja()
+      response_SE=matope_save_mail()
 
 
 
@@ -110,5 +141,5 @@ def crea_hoja ():
    else:
       print("Hoja de Cálculo generada.")        
 
-
+   return(response_SE)
 

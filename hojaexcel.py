@@ -5,6 +5,17 @@ Created on Tue Dec  5 00:10:10 2017
 
 @author: aldg
 """
+import importlib
+import constantes
+from constantes import *
+importlib.reload(constantes)   #asegura que las constantes inicailes son recalculadas en jupyter notebook
+
+
+
+# Re-import everything from `config` to update the namespace
+from constantes import *
+
+
 from operacion import Regla, Operacion,Suma,Resta,Multiplicacion,Division,Division_con_restas
 
 from openpyxl import Workbook
@@ -19,7 +30,7 @@ from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 from openpyxl.worksheet.datavalidation import DataValidation
 from math import ceil
 
-from constantes import *
+
 # import builtins
 
 
@@ -163,7 +174,7 @@ class HojaExcel:
             self.x_operacion=(self.x_operacion+1)% self.operaciones_por_fila
             if self.x_operacion==0 :
                 self.y_operacion+=1
-            print (ope ,ope.terminos,"--> OK")
+            print (ope.__class__ ,ope.terminos,"--> OK")
 
     def carga_operacion(self,ope):
 

@@ -1,6 +1,6 @@
 import base64
 from hojaexcel import *
-from constantes import *
+# from constantes import *
 from datetime import datetime
 import requests
 import json
@@ -37,7 +37,7 @@ def matope_save_mail():
    if not response.ok:
      print(response.text)
    else:
-     print("folder & send OK")   
+     print("Carpeta & envio OK")   
    return(response)  
 
 

@@ -5,13 +5,9 @@ Created on Tue Dec  5 00:10:10 2017
 
 @author: aldg
 """
-import importlib
-import constantes
-importlib.reload(constantes)   #asegura que las constantes inicailes son recalculadas en jupyter notebook
 
-# Re-import everything from `config` to update the namespace
 from constantes import *
-
+formatos=func_formatos()   #para evitar problema constantes dinamicas en segundas reejecuciones de collab jupyter
 
 from operacion import Regla, Operacion,Suma,Resta,Multiplicacion,Division,Division_con_restas
 
@@ -53,7 +49,7 @@ class HojaExcel:
 
 
         self.operaciones=[]
-
+        
 
     def inicializa(self):
 

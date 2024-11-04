@@ -5,11 +5,9 @@ Created on Sat Dec  2 21:53:38 2017
 
 @author: aldg
 """
-import importlib
-import constantes
-importlib.reload(constantes)   #asegura que las constantes inicailes son recalculadas en jupyter notebook
-# Re-import everything from `config` to update the namespace
+
 from constantes import *
+formatos=func_formatos()   #para evitar problema constantes dinamicas en segundas reejecuciones de collab jupyter
 
 import random
 from decimal import Decimal, getcontext

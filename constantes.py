@@ -27,6 +27,7 @@ from openpyxl.styles import Font, PatternFill, Border, Side,Alignment
 color_fondo_defecto='FFFFFF'   #blanco
 color_tinta_defecto='000000'   #negro
 
+formatos=None
 
 def func_formatos ():
     fmt = {

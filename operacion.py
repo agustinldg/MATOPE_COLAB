@@ -7,7 +7,7 @@ Created on Sat Dec  2 21:53:38 2017
 """
 
 from constantes import *
-formatos=func_formatos()   #para evitar problema constantes dinamicas en segundas reejecuciones de collab jupyter
+
 
 import random
 from decimal import Decimal, getcontext
@@ -42,6 +42,9 @@ class Operacion:
         self.terminos=[]
         self.x=0
         self.y=0
+        global formatos
+        formatos=func_formatos()   #para evitar problema constantes dinamicas en segundas reejecuciones de collab jupyter
+
     tipo=0
     def setTipo(self,tipo):
         self.tipo=tipo

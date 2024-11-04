@@ -10,8 +10,6 @@ import constantes
 from constantes import *
 importlib.reload(constantes)   #asegura que las constantes inicailes son recalculadas en jupyter notebook
 
-
-
 # Re-import everything from `config` to update the namespace
 from constantes import *
 

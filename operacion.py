@@ -5,7 +5,13 @@ Created on Sat Dec  2 21:53:38 2017
 
 @author: aldg
 """
+import importlib
+import constantes
 from constantes import *
+importlib.reload(constantes)   #asegura que las constantes inicailes son recalculadas en jupyter notebook
+# Re-import everything from `config` to update the namespace
+from constantes import *
+
 import random
 from decimal import Decimal, getcontext
 getcontext().prec = 100

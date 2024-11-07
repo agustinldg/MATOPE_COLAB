@@ -111,14 +111,18 @@ def crea_hoja ():
       if key.startswith('CFG_') and key.isupper() # Exclude built-in names
    }
 
-   url = "https://script.google.com/macros/s/AKfycbxM7zHjcOLxu02w2OrzUaicr5tkhiNElPZV-23D82SlLE2D0lgaj9y2oPLuoeBiuYb8/exec"
+   # url = "https://script.google.com/macros/s/AKfycbxM7zHjcOLxu02w2OrzUaicr5tkhiNElPZV-23D82SlLE2D0lgaj9y2oPLuoeBiuYb8/exec"
+   url = "https://script.google.com/macros/s/AKfycbyIpMELKbNeJlLiS3MO3iiXBhFIUXIo4Nms6UbW_dPVeAGogUbuFDvtv-83VgImcfTI/exec"
    payload = json.dumps({
    "fecha":  datetime.now().strftime("%Y-%m-%d %H:%M:%S") ,
    "user": CFg_USER,
    "file": f'{CFG_NOMBRE_FICHERO}.xlsx',
    "opes": CFG_OPERACIONES,
    "error": 'OK' if errores =="\n" else errores,
-   "params": json.dumps(variables_usuario, indent=4)})
+   "params": json.dumps(variables_usuario, indent=4),
+   "subfolder": CFG_SUBFOLDER,
+   "sendto": CFG_SEND_TO
+   })
    headers = {
    'Content-Type': 'application/json'
    }
